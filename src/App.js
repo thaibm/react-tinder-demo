@@ -1,22 +1,24 @@
 import logo from './logo.svg';
 import './App.css';
+import TinderCard from './components/tinder-card/TinderCard';
 
 function App() {
+  const cards = [
+    { imgUrl: logo, name: 'Thaibm' },
+    { imgUrl: logo, name: 'Anhtl' },
+    { imgUrl: logo, name: 'Doctor Strange' },
+    { imgUrl: logo, name: 'Captain' },
+    { imgUrl: logo, name: 'Thor' },
+  ];
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        {cards.map((card, index) => (
+          <TinderCard key={index} className="App-card">
+            <img src={card.imgUrl} className="App-logo" alt="logo" />
+            <p>{card.name}</p>
+          </TinderCard>
+        ))}
       </header>
     </div>
   );
