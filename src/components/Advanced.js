@@ -21,6 +21,74 @@ const db = [
     url: logo
   },
   {
+    name: 'Jared Dunn1',
+    url: logo
+  },
+  {
+    name: 'Jared Dunn2',
+    url: logo
+  },
+  {
+    name: 'Jared Dunn3',
+    url: logo
+  },
+  {
+    name: 'Jared Dunn4',
+    url: logo
+  },
+  {
+    name: 'Jared Dunn5',
+    url: logo
+  },
+  {
+    name: 'Jared Dunn6',
+    url: logo
+  },
+  {
+    name: 'Jared Dunn7',
+    url: logo
+  },
+  {
+    name: 'Jared Dunn8',
+    url: logo
+  },
+  {
+    name: 'Jared Dunn9',
+    url: logo
+  },
+  {
+    name: 'Jared Dunn12',
+    url: logo
+  },
+  {
+    name: 'Jared Dunn21',
+    url: logo
+  },
+  {
+    name: 'Jared Dunn121',
+    url: logo
+  },
+  {
+    name: 'Jared Dunn1212',
+    url: logo
+  },
+  {
+    name: 'Jared Dunn121212',
+    url: logo
+  },
+  {
+    name: 'Jared Dunn21212',
+    url: logo
+  },
+  {
+    name: 'Jared Dunn434',
+    url: logo
+  },
+  {
+    name: 'Jared Dunn23222',
+    url: logo
+  },
+  {
     name: 'Dinesh Chugtai',
     url: logo
   }
@@ -65,7 +133,7 @@ function Advanced() {
       <div className='cardContainer'>
         {characters.map((character, index) =>
           <TinderCard ref={childRefs[index]}
-            className='swipe' key={character.name}
+            className='swipe' key={index}
             onSwipe={(dir) => swiped(dir, character.name)}
             onCardLeftScreen={() => outOfFrame(character.name)}>
             <div style={{ backgroundImage: 'url(' + character.url + ')' }} className='card'>

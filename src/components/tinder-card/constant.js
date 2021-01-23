@@ -111,20 +111,17 @@ const getRotation = (element) => {
   return ans;
 };
 
-export const dragableTouchmove = (
-  coordinates,
-  element,
-  offset,
-  lastLocation
-) => {
-  const pos = { x: coordinates.x + offset.x, y: coordinates.y + offset.y };
-  const newLocation = { x: pos.x, y: pos.y, time: new Date().getTime() };
-  const translation = translationString(pos.x, pos.y);
-  const rotCalc = calcSpeed(lastLocation, newLocation).x / 1000;
-  const rotation = rotationString(rotCalc * settings.maxTilt);
-  element.style.transform = translation + rotation;
-  return newLocation;
-};
+export const draggableTouchmove = (coordinates, element, offset, originalLocation) => {
+  const pos = { x: coordinates.x + offset.x, y: coordinates.y + offset.y }
+  const newLocation = { x: pos.x, y: pos.y, time: new Date().getTime() }
+  const translation = translationString(pos.x, pos.y)
+  // const rotCalc = calcSpeed(lastLocation, newLocation).x / 1000
+  // calculate reg for rotation
+  const rotCalc = -(originalLocation.x + coordinates.x) / 100;
+  const rotation = rotationString(rotCalc * settings.maxTilt)
+  element.style.transform = translation + rotation
+  return newLocation
+}
 
 export const touchCoordinatesFromEvent = (e) => {
   const touchLocation = e.targetTouches[0];
@@ -134,3 +131,11 @@ export const touchCoordinatesFromEvent = (e) => {
 export const mouseCoordinatesFromEvent = (e) => {
   return { x: e.clientX, y: e.clientY };
 };
+
+export const getSwipeDirection = (speed) => {
+  if (Math.abs(speed.x) > Math.abs(speed.y)) {
+    return (speed.x > 0) ? 'right' : 'left'
+  } else {
+    return (speed.y > 0) ? 'up' : 'down'
+  }
+}
